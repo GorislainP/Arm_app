@@ -4,7 +4,7 @@ use_frameworks! :linkage => :static  # Declare use_frameworks only once
 
 target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
+  use_frameworks!
   # Adding Firebase SDK dependencies
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
