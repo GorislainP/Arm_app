@@ -1,17 +1,16 @@
 platform :ios, '12.0'
 
-use_frameworks! :linkage => :static
+use_frameworks! :linkage => :static  # Declare use_frameworks only once
 
 target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  use_frameworks!
 
-   # Добавление Firebase SDK
-   pod 'Firebase/Core'
-   pod 'Firebase/Firestore'
-   pod 'Firebase/Auth'
-   pod 'Firebase/Database'
-   pod 'Firebase/Storage'
+  # Adding Firebase SDK dependencies
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end
 
 post_install do |installer|
