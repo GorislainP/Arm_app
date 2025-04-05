@@ -1,0 +1,13 @@
+# ios/Podfile
+
+platform :ios, '11.0'
+
+ENV['FLUTTER_ROOT'] ||= File.expand_path('..', __dir__)
+load File.join(ENV['FLUTTER_ROOT'], 'packages', 'flutter_tools', 'bin', 'podhelper.rb')
+
+target 'Runner' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end
