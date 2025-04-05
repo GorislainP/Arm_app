@@ -5,7 +5,7 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      cocoapods: default
+      cocoapods: 1.10.1  # Убедись, что версия cocoapods актуальна
     scripts:
       - name: Install Flutter dependencies
         script: |
@@ -19,10 +19,11 @@ workflows:
 
       - name: Build IPA (no codesign)
         script: |
-          flutter build ios --release --no-codesign
+          flutter build ios --release --no-codesign --workspace ios/Runner.xcworkspace --scheme Runner --xcconfig ios/Flutter/Release.xcconfig
 
     artifacts:
       - build/ios/iphoneos/Runner.app
+      - build/ios/iphoneos/Runner.ipa
       - build/ios/ipa/*.ipa
       - build/ios/ipa/*.dSYM.zip
 
