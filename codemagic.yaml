@@ -1,19 +1,32 @@
 workflows:
-  ios-ipa-only:
-    name: iOS IPA Only
+  ios-build:
+    name: iOS Build (no codesign)
     max_build_duration: 60
     environment:
-      vars:
-        XCODE_WORKSPACE: "Runner.xcworkspace"
-        XCODE_SCHEME: "Runner"
       flutter: stable
       xcode: latest
+      cocoapods: default
     scripts:
-      - name: Get Flutter packages
-        script: flutter pub get
+      - name: Install Flutter dependencies
+        script: |
+          flutter pub get
+
+      - name: Install CocoaPods
+        script: |
+          cd ios
+          pod install
+          cd ..
 
       - name: Build IPA (no codesign)
-        script: flutter build ios --release --no-codesign
+        script: |
+          flutter build ios --release --no-codesign
 
     artifacts:
-      - build/ios/iphoneos/*.ipa
+      - build/ios/iphoneos/Runner.app
+      - build/ios/ipa/*.ipa
+      - build/ios/ipa/*.dSYM.zip
+
+    publishing:
+      email:
+        recipients:
+          - evan.00270@gmail.com
