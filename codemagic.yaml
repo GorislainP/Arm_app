@@ -27,7 +27,3 @@ workflows:
       - build/ios/ipa/*.ipa
       - build/ios/ipa/*.dSYM.zip
 
-    publishing:
-      email:
-        recipients:
-          - evan.00270@gmail.com
